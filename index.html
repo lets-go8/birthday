@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Shweta! ✨</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+</head>
+<body>
+
+    <!-- Audio Tag -->
+    <audio id="bg-music" loop>
+        <source id="audio-source" src="" type="audio/mpeg">
+    </audio>
+
+    <div class="site-border">
+        <div class="main-card">
+            
+            <!-- Section 0: Select Music -->
+            <section id="page0" class="section active">
+                <div class="content">
+                    <h1 class="aesthetic-title" style="font-size: 2.8rem;">Select Birthday Vibe</h1>
+                    <div style="font-size: 2rem; margin: 5px 0;">🎵</div>
+                    <p class="tagline-sub" style="font-size: 1.1rem; margin-bottom: 12px;">Choose background music for your special day!</p>
+                    
+                    <div class="song-options-scroll">
+                        <button class="song-btn" onclick="selectSong('music/cutiepie.mpeg', this)">🎀 Cutiepie</button>
+                        <button class="song-btn" onclick="selectSong('music/Sunn re sajaniyaa.mpeg', this)">🌻 Sunn re sajaniyaa</button>
+                        <button class="song-btn" onclick="selectSong('music/London thumakda.mpeg', this)">🎸 London thumakda</button>
+                        <button class="song-btn" onclick="selectSong('music/Heroine.mpeg', this)">🎂 Heroine</button>
+                        <button class="song-btn" onclick="selectSong('music/Sitara.mpeg', this)">✨ Sitara</button>
+                        <button class="song-btn" onclick="selectSong('music/Kashmir tu mai kanyakumari.mpeg', this)">💖 Kashmir tu mai kanyakumari</button>
+                        <button class="song-btn" onclick="selectSong('music/Khali msg pe msg.mpeg', this)">🎀 Khali msg pe msg</button>
+                    </div>
+
+                    <div class="music-controls">
+                        <button id="play-pause-btn" class="control-btn" onclick="togglePlayPause()" disabled>▶️ Play Song</button>
+                    </div>
+
+                    <button class="btn" onclick="nextPage('page1')" style="margin-top: 15px;">Start Surprise ✨</button>
+                </div>
+            </section>
+
+            <!-- Section 1: Intro Screen -->
+            <section id="page1" class="section">
+                <div class="content">
+                    <h1 class="aesthetic-title">Happy Birthday</h1>
+                    <div class="intro-img-container">
+                        <img class="intro-card-img" src="images/pic5.jpeg" alt="Birthday Special">
+                    </div>
+                    <p class="tagline-caps">To My best best best friend ✨</p>
+                    <p class="tagline-sub">Ready for your birthday surprise? 💖</p>
+                    <button class="btn" onclick="nextPage('page2')">Best Moments 📸</button>
+                </div>
+            </section>
+
+            <!-- Section 2: Photo Memory Land (Auto Slider) -->
+            <section id="page2" class="section">
+                <div class="content">
+                    <h2>Best Moments 📸</h2>
+                    <div class="slider-container">
+                        <div class="slider-track" id="slider-track">
+                            <div class="slide"><img src="images/pic10.jpeg" alt="Memory 1"></div>
+                            <div class="slide"><img src="images/pic2.jpeg" alt="Memory 2"></div>
+                            <div class="slide"><img src="images/pic11.jpeg" alt="Memory 3"></div>
+                            <div class="slide"><img src="images/pic3.jpeg" alt="Memory 4"></div>
+                            <div class="slide"><img src="images/pic4.jpeg" alt="Memory 5"></div>
+                            <div class="slide"><img src="images/pic7.jpeg" alt="Memory 6"></div>
+                            <div class="slide"><img src="images/pic9.jpeg" alt="Memory 7"></div>
+                            <div class="slide"><img src="images/pic1.jpeg" alt="Memory 8"></div>
+                            <div class="slide"><img src="images/pic5.jpeg" alt="Memory 9"></div>
+                        </div>
+                    </div>
+                    <p id="memory-text" style="margin-top: 10px;">Sweet memories captured forever!</p>
+                    <div class="btn-group">
+                        <button class="btn" onclick="nextPage('page3')">Next Surprise 🎂</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3: Birthday Cake Page -->
+            <section id="page3" class="section">
+                <div class="content">
+                    <h2>Make a Wish! 🎂✨</h2>
+                    <div class="cake-container" onclick="blowCandle()">
+                        <div class="flame" id="flame">🔥</div>
+                        <div class="cake">🎂</div>
+                    </div>
+                    <p id="cake-msg">Tap the cake to blow out the candle!</p>
+                    <button class="btn" id="balloon-btn" style="display:none;" onclick="nextPage('page_balloons')">Pop Balloons 🎈</button>
+                </div>
+            </section>
+
+            <!-- Section: Pop Balloons Game -->
+            <section id="page_balloons" class="section">
+                <div class="content">
+                    <h2>Pop The Balloons! 🎈✨</h2>
+                    <p id="balloon-hint">Tap all 5 balloons to unlock wishes!</p>
+
+                    <div class="balloon-grid" id="balloon-grid">
+                        <div class="game-balloon" onclick="popSingleBalloon(this)">🎈</div>
+                        <div class="game-balloon" onclick="popSingleBalloon(this)">🎈</div>
+                        <div class="game-balloon" onclick="popSingleBalloon(this)">🎈</div>
+                        <div class="game-balloon" onclick="popSingleBalloon(this)">🎈</div>
+                        <div class="game-balloon" onclick="popSingleBalloon(this)">🎈</div>
+                    </div>
+
+                    <button class="btn" id="wishes-btn" style="display:none;" onclick="nextPage('page4')">View Wishes 💌</button>
+                </div>
+            </section>
+
+            <!-- Section 4: Birthday Wishes Cards -->
+            <section id="page4" class="section">
+                <div class="content">
+                    <h2>Birthday Wishes ✨</h2>
+                    <p style="margin-bottom: 15px;">A few wishes for your special year ahead!</p>
+
+                    <div class="wish-cards-container">
+                        <div class="wish-pill">
+                            <span class="wish-emoji">🌸</span>
+                            <div class="wish-text">
+                                <strong>Endless Happiness</strong>
+                                <p>May your smile never fade away.</p>
+                            </div>
+                        </div>
+
+                        <div class="wish-pill">
+                            <span class="wish-emoji">✨</span>
+                            <div class="wish-text">
+                                <strong>Big Dreams & Success</strong>
+                                <p>May all your goals come true this year.</p>
+                            </div>
+                        </div>
+
+                        <div class="wish-pill">
+                            <span class="wish-emoji">🍕</span>
+                            <div class="wish-text">
+                                <strong>Good Food & Zero Stress</strong>
+                                <p>More fun hangouts & endless gossips!</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn" onclick="nextPage('page1')" style="margin-top: 15px;">Replay Magic 🔄</button>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
